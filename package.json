@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "lint": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
+    "test": "yarn jest --config=jest.config.json"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,17 @@
   "bugs": {
     "url": "https://github.com/GeminiWind/JsonAPIErrors/issues"
   },
-  "homepage": "https://github.com/GeminiWind/JsonAPIErrors#readme"
+  "homepage": "https://github.com/GeminiWind/JsonAPIErrors#readme",
+  "dependencies": {
+    "ts-custom-error": "^3.1.1",
+    "typescript": "^3.6.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.8",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.0",
+    "tslint-config-airbnb": "^5.11.2"
+  }
 }
