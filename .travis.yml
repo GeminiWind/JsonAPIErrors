@@ -14,7 +14,7 @@ jobs:
     - stage: publish
       deploy:
         provider: script
-        script: "cp .npmrc.template $HOME/.npmrc && npm publish"
+        script: "yarn build && cp .npmrc.template $HOME/.npmrc && npm publish"
         skip_cleanup: true
         on:
           tags: true
