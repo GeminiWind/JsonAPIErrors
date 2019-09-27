@@ -15,23 +15,23 @@ $ npm install json-api-error
 
 At the current implementation, `json-api-error` support the following common errors
 
-- BadRequestError
-- UnauthorizedError
-- ForbiddenError
-- NotFoundError
-- MethodNotAllowedError
-- NotAcceptableError
-- RequestTimeoutError
-- UnsupportedMediaTypeError
-- InternalError
-- NotImplementedError
-- BadGatewayError
-- ServiceUnavailableError
-- GatewayTimeoutError
+- `BadRequestError`
+- `UnauthorizedError`
+- `ForbiddenError`
+- `NotFoundError`
+- `MethodNotAllowedError`
+- `NotAcceptableError`
+- `RequestTimeoutError`
+- `UnsupportedMediaTypeError`
+- `InternalError`
+- `NotImplementedError`
+- `BadGatewayError`
+- `ServiceUnavailableError`
+- `GatewayTimeoutError`
 
 ### Example
 
-To use these errors, import it and throw it like normal error
+### Usage with detailed message
 
 ```
 import { BadRequestError } from 'json-api-error';
@@ -39,7 +39,7 @@ import { BadRequestError } from 'json-api-error';
 throw new BadRequestError('Request is invalid');
 ```
 
-Or with options
+### Usage with option
 
 ```
 import { BadRequestError } from 'json-api-error';
@@ -47,9 +47,24 @@ import { BadRequestError } from 'json-api-error';
 throw new BadRequestError({
     id: 'BadRequestError',
     status: '400',
+    code: 'BadRequestError',
     title: 'BadRequestError',
     detail: 'The #/userName must be number'
 }));
+```
+
+### Usage with customized your JsonApiError
+
+```
+import { JsonApiError } from 'json-api-error';
+
+throw new JsonApiError({
+    id: 'RequestEntityTooLargeError',
+    status: '413',
+    code: 'RequestEntityTooLargeError',
+    title: 'RequestEntityTooLargeError',
+    detail: 'Request Entity Too Large'
+  });
 ```
 
 ### Options

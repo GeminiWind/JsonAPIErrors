@@ -54,10 +54,12 @@ class JsonApiError extends CustomError {
     const allowedProps: string[] = ['id', 'link', 'status', 'code', 'title', 'detail', 'source', 'meta'];
 
     return allowedProps.reduce(
-      (error, propName):any => {
+      (error: object, propName: string): any => {
         if (JsonApiError[propName]) {
           error[propName] = JsonApiError[propName];
         }
+
+        return error;
       },
       {});
   }

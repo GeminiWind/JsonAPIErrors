@@ -1,5 +1,6 @@
 import JsonApiError from './JsonApiError';
 
+export { JsonApiError };
 export class BadRequestError extends JsonApiError {
   static id = 'BadRequestError';
   static status = '400';
