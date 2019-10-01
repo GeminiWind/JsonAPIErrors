@@ -31,7 +31,7 @@ At the current implementation, `json-api-error` support the following common err
 
 ### Example
 
-### Usage with detailed message
+### Usage with simple detailed message
 
 ```
 import { BadRequestError } from 'json-api-error';
@@ -39,7 +39,7 @@ import { BadRequestError } from 'json-api-error';
 throw new BadRequestError('Request is invalid');
 ```
 
-### Usage with option
+### Usage with options
 
 ```
 import { BadRequestError } from 'json-api-error';
@@ -72,15 +72,11 @@ throw new JsonApiError({
 | Properties  | Detail   | Type  |  Default Value  |
 |---|---|---|---|
 | id  | a unique identifier for this particular occurrence of the problem  | string  |  equal to error name |
-| links  | TBD  |  object | N/A |
+| links  | a links object, more detailed in [here](https://jsonapi.org/format/#error-objects) |  object | N/A |
 | status | the HTTP status code applicable to this problem, expressed as a string value  |  string | equal to HTTP code |
 | code |  an application-specific error code, expressed as a string value | string  | equal to error name |
 | title | a short, human-readable summary of the problem  | string  |  equal to error name |
 | detail | a human-readable explanation specific to this occurrence of the problem  | string  |  equal to error name |
-| source |  TBD |  object | NA |
+| source |  an object containing references to the source of the error, more detailed in [here](https://jsonapi.org/format/#error-objects) |  object | NA |
 | meta | a meta object containing non-standard meta-information about the error.  | object  |  NA |
-
-### API 
-
-#### toJSON
 
