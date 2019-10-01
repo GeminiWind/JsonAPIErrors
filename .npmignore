@@ -9,3 +9,5 @@ tslint.json
 .git
 .DS_Store
 .npmrc
+.travis.yml
+src

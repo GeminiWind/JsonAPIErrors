@@ -1,7 +1,7 @@
 {
   "name": "json-api-error",
   "version": "1.0.0",
-  "description": "",
+  "description": "JSON API Errors",
   "main": "dist/index.js",
   "scripts": {
     "build": "./node_modules/.bin/rimraf dist && yarn tsc",
@@ -14,8 +14,13 @@
     "type": "git",
     "url": "git+https://github.com/GeminiWind/JsonAPIErrors.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "errors",
+    "json-api-errors",
+    "json-api-error",
+    "json-api"
+  ],
+  "author": "Gemini Wind<gemini.wind285@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/GeminiWind/JsonAPIErrors/issues"
