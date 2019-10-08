@@ -33,27 +33,36 @@ class JsonApiError extends CustomError {
   static source: ISource;
   static meta: IMeta;
 
-  constructor(input: string | IJsonApiError) {
+  static readonly allowedProps: string[] =  ['id', 'link', 'status', 'code', 'title', 'detail', 'source', 'meta'];
+
+  constructor(input: any);
+  constructor(input: {
+    id?: string;
+    link?: ILink;
+    code?: string;
+    title?: string;
+    detail?: string;
+    source?: ISource;
+    meta?: IMeta;
+  })
+  constructor(input: IJsonApiError) {
     if (typeof input === 'string') {
       JsonApiError.detail = input;
-    }
-
-    if (typeof input === 'object') {
-    // TODO: validate input as JSON API Error schemas
+    } else if (input === Object(input)) {
       Object.keys(input).forEach((key) => {
-        if (input[key]) {
+        if (key && input[key] && JsonApiError.allowedProps.includes(key)) {
           JsonApiError[key] = input[key];
         }
       });
+    } else {
+      throw new TypeError(`Could not parse ${input} as JsonApiError options`);
     }
 
     super(JsonApiError.detail);
   }
 
   toJSON() {
-    const allowedProps: string[] = ['id', 'link', 'status', 'code', 'title', 'detail', 'source', 'meta'];
-
-    return allowedProps.reduce(
+    return JsonApiError.allowedProps.reduce(
       (error: object, propName: string): any => {
         if (JsonApiError[propName]) {
           error[propName] = JsonApiError[propName];
