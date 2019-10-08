@@ -1,17 +1,34 @@
-Changelog
-The format is based on Keep a Changelog.
+# Changelog
+All notable changes to this project will be documented in this file.
 
-[Unreleased]
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-[1.0.1] - 01-10-2019
 
-## Changed
+## [Unreleased]
+
+## [1.0.2] - 08-10-2019
+
+### Changed
+
+- Enable partial options in constructing available Json API Error.
+
+## [1.0.1] - 01-10-2019
+
+### Changed
 
 - Update documentation in `README.md`
 
-## Removed
+### Removed
 
 - Removed `src` & `travis.yml` to be published
 
-[1.0.0] - 27-09-2019
-Initial release
+## [1.0.0] - 27-09-2019
+
+### Added
+
+- Initial release
+
+[1.0.2]: https://github.com/GeminiWind/JsonAPIErrors/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/GeminiWind/JsonAPIErrors/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/GeminiWind/JsonAPIErrors/releases/tag/v1.0.0

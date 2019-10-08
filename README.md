@@ -46,7 +46,6 @@ import { BadRequestError } from 'json-api-error';
 
 throw new BadRequestError({
     id: 'BadRequestError',
-    status: '400',
     code: 'BadRequestError',
     title: 'BadRequestError',
     detail: 'The #/userName must be number'
