@@ -23,6 +23,16 @@ interface IJsonApiError {
   meta?: IMeta;
 }
 
+interface IJsonApiErrorOptinalField {
+  id?: string;
+  link?: ILink;
+  code?: string;
+  title?: string;
+  detail?: string;
+  source?: ISource;
+  meta?: IMeta;
+}
+
 class JsonApiError extends CustomError {
   static id: string;
   static link: ILink;
@@ -36,22 +46,14 @@ class JsonApiError extends CustomError {
   static readonly allowedProps: string[] =  ['id', 'link', 'status', 'code', 'title', 'detail', 'source', 'meta'];
 
   constructor(input: any);
-  constructor(input: {
-    id?: string;
-    link?: ILink;
-    code?: string;
-    title?: string;
-    detail?: string;
-    source?: ISource;
-    meta?: IMeta;
-  })
+  constructor(input: IJsonApiErrorOptinalField)
   constructor(input: IJsonApiError) {
     if (typeof input === 'string') {
       JsonApiError.detail = input;
     } else if (input === Object(input)) {
       Object.keys(input).forEach((key) => {
         if (key && input[key] && JsonApiError.allowedProps.includes(key)) {
-          JsonApiError[key] = input[key];
+          this.constructor[key] = input[key];
         }
       });
     } else {
@@ -64,8 +66,8 @@ class JsonApiError extends CustomError {
   toJSON() {
     return JsonApiError.allowedProps.reduce(
       (error: object, propName: string): any => {
-        if (JsonApiError[propName]) {
-          error[propName] = JsonApiError[propName];
+        if (this.constructor[propName]) {
+          error[propName] = this.constructor[propName];
         }
 
         return error;
