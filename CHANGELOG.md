@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed simple detail does not work
+
+### Added
+
+- JSON API Error Handler Middleware for Express
+
 ## [1.0.3] - 21-10-2019
 
 ### Fixed

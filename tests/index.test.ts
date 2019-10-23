@@ -1,4 +1,5 @@
 import {
+  default as JsonApiError,
   BadRequestError,
   UnauthorizedError,
   ForbiddenError,
@@ -10,8 +11,7 @@ import {
   InternalError,
   NotImplementedError,
   ServiceUnavailableError,
-  GatewayTimeoutError,
-  JsonApiError
+  GatewayTimeoutError
 } from '../src/';
 
 describe('errors', () => {

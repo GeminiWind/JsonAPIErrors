@@ -31,7 +31,7 @@ At the current implementation, `json-api-error` support the following common err
 
 ### Example
 
-### Usage with simple detailed message
+### Error usage with simple detailed message
 
 ```
 import { BadRequestError } from 'json-api-error';
@@ -39,7 +39,7 @@ import { BadRequestError } from 'json-api-error';
 throw new BadRequestError('Request is invalid');
 ```
 
-### Usage with options
+### Error usage with options
 
 ```
 import { BadRequestError } from 'json-api-error';
@@ -52,10 +52,10 @@ throw new BadRequestError({
 }));
 ```
 
-### Usage with customized your JsonApiError
+### Error usage with customized your JsonApiError
 
 ```
-import { JsonApiError } from 'json-api-error';
+import JsonApiError from 'json-api-error';
 
 throw new JsonApiError({
     id: 'RequestEntityTooLargeError',
@@ -65,6 +65,35 @@ throw new JsonApiError({
     detail: 'Request Entity Too Large'
   });
 ```
+
+### Express Middleware - JSON API Error Handler usage
+
+`json-api-error` also ships a Express middleware to handle these JSON API Errors. This middleware will catch JSON API Error and return response for your end-user as the following example format (including the status response):
+
+```
+{
+  errors: [{
+    id: 'NotFoundError',
+    status: '404',
+    code: 'NotFoundError',
+    title: 'NotFoundError',
+    detail: 'Resource was not found'
+  }]
+}
+```
+
+To use this, configure your Express app
+
+
+```
+import { jsonApiErrorHandler } from 'json-api-error/middlewares';
+
+
+app.use(jsonApiErrorHandler);
+
+```
+
+**Note:** For best practice, please place `jsonApiErrorHandler` below utilized middlewares.
 
 ### Options
 
@@ -76,6 +105,9 @@ throw new JsonApiError({
 | code |  an application-specific error code, expressed as a string value | string  | equal to error name |
 | title | a short, human-readable summary of the problem  | string  |  equal to error name |
 | detail | a human-readable explanation specific to this occurrence of the problem  | string  |  equal to error name |
-| source |  an object containing references to the source of the error, more detailed in [here](https://jsonapi.org/format/#error-objects) |  object | NA |
-| meta | a meta object containing non-standard meta-information about the error.  | object  |  NA |
+| source |  an object containing references to the source of the error, more detailed in [here](https://jsonapi.org/format/#error-objects) |  object | N/A |
+| meta | a meta object containing non-standard meta-information about the error.  | object  |  N/A |
 
+## LICENSE
+
+MIT
