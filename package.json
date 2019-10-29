@@ -2,13 +2,14 @@
   "name": "json-api-error",
   "version": "1.0.4",
   "description": "JSON API Errors",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/rimraf dist && yarn tsc",
     "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
     "test": "yarn jest --config=jest.config.json",
     "test:coverage": "yarn test --coverage",
-    "version": "yarn version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md"
+    "version": "yarn version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
+    "prepublishOnly": "cp -r ./dist/* . && rm -rf ./dist"
   },
   "repository": {
     "type": "git",
