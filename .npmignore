@@ -11,3 +11,4 @@ tslint.json
 .npmrc
 .travis.yml
 src
+dist
