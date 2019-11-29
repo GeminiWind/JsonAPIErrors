@@ -71,6 +71,14 @@ export class InternalError extends JsonApiError {
   static detail = '[InternalError] - InternalError';
 }
 
+export class MalformedError extends JsonApiError {
+  static id = 'MalformedError';
+  static status = '400';
+  static code = 'MalformedError';
+  static title = 'MalformedError';
+  static detail = '[MalformedError] - Error in reading malformed JSON';
+}
+
 export class NotImplementedError extends JsonApiError {
   static id = 'NotImplementedError';
   static status = '501';
