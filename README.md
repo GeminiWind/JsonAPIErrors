@@ -17,6 +17,7 @@ At the current implementation, `json-api-error` support the following common err
 
 - `BadRequestError`
 - `UnauthorizedError`
+- `MalformedError`
 - `ForbiddenError`
 - `NotFoundError`
 - `MethodNotAllowedError`
