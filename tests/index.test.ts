@@ -1,6 +1,7 @@
 import {
   default as JsonApiError,
   BadRequestError,
+  MalformedError,
   UnauthorizedError,
   ForbiddenError,
   NotFoundError,
@@ -46,6 +47,23 @@ describe('errors', () => {
       }).toThrow(UnauthorizedError);
     });
   });
+
+  describe('MalformedError', () => {
+    it('throw MalformedError', () => {
+      expect(() => {
+        throw new MalformedError('Error in reading malformed JSON');
+      }).toThrow(MalformedError);
+    });
+
+    it('throw UnauthorizedError with options', () => {
+      expect(() => {
+        throw new MalformedError({
+          detail: 'Error in reading malformed JSON'
+        });
+      }).toThrow(MalformedError);
+    });
+  });
+
 
   describe('ForbiddenError', () => {
     it('throw ForbiddenError', () => {
