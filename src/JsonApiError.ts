@@ -72,13 +72,14 @@ class JsonApiError extends CustomError {
 
     }
 
+    super(opts.detail);
+
     Object.keys(opts)
       .forEach(
         (k) => {
           this.constructor[k] = opts[k];
         });
 
-    super(opts.detail);
   }
 
   toJSON() {
