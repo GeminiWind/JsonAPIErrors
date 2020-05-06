@@ -43,6 +43,8 @@ class JsonApiError extends CustomError {
   static source: ISource;
   static meta: IMeta;
 
+  private _error;
+
   static readonly allowedProps: string[] =  ['id', 'link', 'status', 'code', 'title', 'detail', 'source', 'meta'];
 
   constructor(input: any);
@@ -74,24 +76,21 @@ class JsonApiError extends CustomError {
 
     super(opts.detail);
 
-    Object.keys(opts)
-      .forEach(
-        (k) => {
-          this.constructor[k] = opts[k];
-        });
-
-  }
-
-  toJSON() {
-    return JsonApiError.allowedProps.reduce(
+    this._error = JsonApiError.allowedProps.reduce(
       (error: object, propName: string): any => {
-        if (this.constructor[propName]) {
+        if (opts[propName]) {
+          error[propName] = opts[propName];
+        } else if (this.constructor[propName]) {
           error[propName] = this.constructor[propName];
         }
 
         return error;
       },
       {});
+  }
+
+  toJSON() {
+    return this._error;
   }
 }
 

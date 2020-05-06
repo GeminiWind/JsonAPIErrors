@@ -27,13 +27,10 @@ describe('jsonApiErrorHandler', () => {
   });
 
   it('should return response in the JSON API Error format if error is instance of AggregateJsonApiError', () => {
-    const err = new AggregateJsonApiError({
-      status: 400,
-      errors: [
-        new BadRequestError('Data is required'),
-        new NotFoundError('Record is not found'),
-      ]
-    });
+    const err = new AggregateJsonApiError([
+      new BadRequestError('Data is required'),
+      new BadRequestError('Record is not found'),
+    ], 400);
 
     const res = {
       send:  jest.fn().mockImplementation(function () { return this; }),
@@ -53,10 +50,10 @@ describe('jsonApiErrorHandler', () => {
         title: 'BadRequestError',
         detail: 'Data is required'
       }, {
-        id: 'NotFoundError',
-        status: '404',
-        code: 'NotFoundError',
-        title: 'NotFoundError',
+        id: 'BadRequestError',
+        status: '400',
+        code: 'BadRequestError',
+        title: 'BadRequestError',
         detail: 'Record is not found'
       }]
     });

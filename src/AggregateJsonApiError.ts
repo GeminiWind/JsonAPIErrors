@@ -5,10 +5,7 @@ class AggregateJsonApiError extends AggregateError {
 	public status;
 	public errors;
 
-  constructor({
-		status,
-		errors,
-	}) {
+  constructor(errors, status) {
 		if (!Number.isInteger(status)) {
 			throw new TypeError(`Expected status to be an Int, got ${typeof status}`)
 		}
