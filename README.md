@@ -34,7 +34,7 @@ At the current implementation, `json-api-error` support the following common err
 
 ### Error usage with simple detailed message
 
-```
+```js
 import { BadRequestError } from 'json-api-error';
 
 throw new BadRequestError('Request is invalid');
@@ -55,7 +55,7 @@ throw new BadRequestError({
 
 ### Error usage with customized your JsonApiError
 
-```
+```js
 import JsonApiError from 'json-api-error';
 
 throw new JsonApiError({
@@ -67,11 +67,22 @@ throw new JsonApiError({
   });
 ```
 
+### AggregateJsonApiError(errors, status)
+
+```js
+import { AggregateJsonApiError } from 'json-api-error';
+
+throw new AggregateJsonApiError([
+  new BadRequestError('Something went wrong'),
+  new BadRequestError('Request is valid')
+], 400);
+```
+
 ### Express Middleware - JSON API Error Handler usage
 
 `json-api-error` also ships a Express middleware to handle these JSON API Errors. This middleware will catch JSON API Error and return response for your end-user as the following example format (including the status response):
 
-```
+```js
 {
   errors: [{
     id: 'NotFoundError',
@@ -86,7 +97,7 @@ throw new JsonApiError({
 To use this, configure your Express app
 
 
-```
+```js
 import { jsonApiErrorHandler } from 'json-api-error/middlewares';
 
 
