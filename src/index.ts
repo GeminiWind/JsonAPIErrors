@@ -1,4 +1,6 @@
 import JsonApiError from './JsonApiError';
+import AggregateJsonApiError from './AggregateJsonApiError';
+
 export class BadRequestError extends JsonApiError {
   static id = 'BadRequestError';
   static status = '400';
@@ -110,5 +112,7 @@ export class GatewayTimeoutError extends JsonApiError {
   static title = 'GatewayTimeoutError';
   static detail = '[GatewayTimeoutError] - GatewayTimeoutError';
 }
+
+export { AggregateJsonApiError };
 
 export default JsonApiError;
