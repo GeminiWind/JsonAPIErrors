@@ -10,7 +10,7 @@ interface ISource {
 }
 
 interface IMeta {
-  [key:string]: any;
+  [key: string]: any;
 }
 interface IJsonApiError {
   id: string;
@@ -45,33 +45,39 @@ class JsonApiError extends CustomError {
 
   private _error;
 
-  static readonly allowedProps: string[] =  ['id', 'link', 'status', 'code', 'title', 'detail', 'source', 'meta'];
+  static readonly allowedProps: string[] = [
+    'id',
+    'link',
+    'status',
+    'code',
+    'title',
+    'detail',
+    'source',
+    'meta'
+  ];
 
   constructor(input: any);
-  constructor(input: IJsonApiErrorOptionalField)
+  constructor(input: IJsonApiErrorOptionalField);
   constructor(input: IJsonApiError) {
     let opts: any = {};
 
     const inputType = typeof input;
 
     switch (inputType) {
-      case 'string':
-        opts.detail = input;
-        break;
-      case 'object':
-        opts = Object.keys(input).reduce(
-          (acc , k) => {
-            if (k && input[k] && JsonApiError.allowedProps.includes(k)) {
-              acc[k] = input[k];
-            }
+    case 'string':
+      opts.detail = input;
+      break;
+    case 'object':
+      opts = Object.keys(input).reduce((acc, k) => {
+        if (k && input[k] && JsonApiError.allowedProps.includes(k)) {
+          acc[k] = input[k];
+        }
 
-            return acc;
-          },
-          {});
-        break;
-      default:
-        throw new TypeError(`Could not parse ${input} as JsonApiError options`);
-
+        return acc;
+      }, {});
+      break;
+    default:
+      throw new TypeError(`Could not parse ${input} as JsonApiError options`);
     }
 
     super(opts.detail);
@@ -86,7 +92,8 @@ class JsonApiError extends CustomError {
 
         return error;
       },
-      {});
+      {}
+    );
   }
 
   toJSON() {

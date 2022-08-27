@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/rimraf dist && yarn tsc",
-    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
+    "lint": "./node_modules/.bin/eslint 'src/**/*.ts'",
     "test": "yarn jest --config=jest.config.json",
     "test:coverage": "yarn test --coverage",
     "version": "yarn version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
@@ -28,19 +28,25 @@
   },
   "homepage": "https://github.com/GeminiWind/JsonAPIErrors#readme",
   "dependencies": {
-    "aggregate-error": "^3.0.1",
-    "ts-custom-error": "^3.1.1",
-    "typescript": "^3.6.3"
+    "aggregate-error": "^3.1.0",
+    "ts-custom-error": "^3.2.0",
+    "typescript": "^4.8.2"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.8",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^12.20.55",
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "@typescript-eslint/eslint-plugin-tslint": "^5.35.1",
+    "@typescript-eslint/parser": "^5.35.1",
     "changelog-verify": "^1.1.2",
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-no-null": "^1.0.2",
+    "eslint-plugin-unicorn": "^43.0.2",
     "jest": "^24.9.0",
-    "rimraf": "^3.0.0",
-    "ts-jest": "^24.1.0",
-    "tslint": "^5.20.0",
-    "tslint-config-airbnb": "^5.11.2",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^24.3.0",
+    "tslint": "^6.1.3",
     "version-changelog": "^3.1.1"
   }
 }
