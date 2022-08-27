@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Include typings wehn publishing to npm
+- Include typings when publishing to npm
 
 ### Changed
 
