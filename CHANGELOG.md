@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Include typings when publishing to npm
+
+### Changed
+
+- Bump various build dependencies
+- Migrate to Jest 28
+
 ## [1.1.0] - 06-05-2020
 
 ### Added
